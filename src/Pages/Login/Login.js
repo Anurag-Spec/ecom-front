@@ -19,6 +19,10 @@ function Login() {
     e.preventDefault();
     dispatch(Signin(email, password));
   };
+
+  function guestLogin() {
+    dispatch(Signin("harsh@gmail.com", "1234"));
+  }
   useEffect(() => {
     if (userInfo) {
       history.push("/");
@@ -37,7 +41,6 @@ function Login() {
             className="login-input"
             type="email"
             id="email"
-            required
           />
         </label>
         <div className="label-input">Password</div>
@@ -50,7 +53,10 @@ function Login() {
           />
         </label>
         <button className="login-button" type="submit">
-          Submit
+          Login
+        </button>
+        <button className="login-button" onClick={guestLogin}>
+          Login as Guest
         </button>
       </form>
       <Link to="/SignUp">Don't have an account? Create one </Link>
